@@ -11,7 +11,7 @@ name: "Test mod"
 git: "https://github.com/you/yourmod.git"
 branch: "1.21.7"
 build: Cmd # Can be Std
-cmd: "./build.sh" # If build is set to Std, cmd isn't needed as it'll run ./gradlew build
+cmd: "./build.sh" # If build is set to Std, cmd isn't needed as it'll run `./gradlew build`
 out: "dir:@/build/libs" # Directory to find the jar, can be file:... to specify a file, @ is the build root
 exclude:
   # Files to exclude if `out` is a directory, if it's a file, set it to []
