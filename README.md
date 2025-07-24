@@ -14,7 +14,7 @@ build: Cmd # Can be Std
 cmd: "./build.sh" # If build is set to Std, cmd isn't needed as it'll run ./gradlew build
 out: "dir:@/build/libs" # Directory to find the jar, can be file:... to specify a file, @ is the build root
 exclude:
-  # Files to exclude if out is a directory, if it's a file, set it to []
+  # Files to exclude if `out` is a directory, if it's a file, set it to []
   - type: Ends
     value: "-sources.jar"
   - type: Starts
@@ -27,14 +27,13 @@ exclude:
 
 ### `mcmodbuild build <path-to-build-file>`
 
-Converts a build file into an installation file named "\<id>.mcmodbuild".
-Optional arguments:
+Converts a build file into an installation file named `<id>.mcmodbuild`.
 
-- `-d`: Destination. Example: `mcmodbuild build testmod.yml -d dist/mod.mcmodbuild`
+
+- `-d`: Destination (Optional). E.g. `mcmodbuild build testmod.yml -d dist/mod.mcmodbuild`
 
 ### `mcmodbuild install <path-to-binary-file>`
 
 Builds a mod from an installation file.
-Optional arguments:
 
-- `-d`: Destination. Example: `mcmodbuild install testmod.mcmodbuild -d mods/`
+- `-d`: Destination (Optional). E.g. `mcmodbuild install testmod.mcmodbuild -d mods/`
