@@ -25,4 +25,7 @@ pub enum Subcommands {
         #[clap(short = 'd')]
         destination: Option<PathBuf>,
     },
+    Init {
+        destination: Option<PathBuf>,
+    },
 }

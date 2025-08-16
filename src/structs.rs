@@ -1,3 +1,4 @@
+use crate::string;
 use oxfmt::{Deserializable, Field, Serializable};
 use serde::{Deserialize, Serialize};
 
@@ -29,6 +30,21 @@ pub struct ModBuild {
     pub cmd: Option<String>,
     pub out: String,
     pub exclude: Vec<ExcludePair>,
+}
+
+impl Default for ModBuild {
+    fn default() -> Self {
+        Self {
+            id: string!("mymod"),
+            name: string!("My Mod"),
+            git: string!("https://github.com/me/mymod.git"),
+            branch: string!("1.21.8"),
+            build: BuildType::Std,
+            cmd: None,
+            out: string!("build/libs/mymod-1.0.0.jar"),
+            exclude: Vec::new(),
+        }
+    }
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq, Serializable, Deserializable)]

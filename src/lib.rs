@@ -1,6 +1,8 @@
 mod binary;
 mod installer;
+mod macros;
 mod structs;
+
 use crate::binary::deserialize;
 use crate::installer::Installer;
 use anyhow::Result;

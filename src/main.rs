@@ -1,27 +1,59 @@
 mod binary;
 mod cli;
 mod installer;
+mod macros;
 mod structs;
 
 use std::{
-    fs,
+    env, fs,
     path::{Path, PathBuf},
+    process,
 };
 
-use anyhow::{Ok, Result};
+use anyhow::{anyhow, Result};
 use binary::deserialize;
 use clap::Parser;
+use colored::Colorize;
 use installer::Installer;
 use oxfmt::Serializable;
 use structs::ModBuild;
 
-fn main() -> Result<()> {
-    let cli = cli::McModBuild::parse();
+use crate::cli::{McModBuild, Subcommands};
+
+fn main() {
+    if let Err(err) = __main() {
+        eprintln!("{}", err.to_string().red().bold());
+        process::exit(1);
+    }
+}
+
+fn __main() -> Result<()> {
+    let cli = McModBuild::parse();
 
     match cli.subcommand {
-        cli::Subcommands::Build { file, destination } => build(file, destination),
-        cli::Subcommands::Install { file, destination } => install(file, destination),
+        Subcommands::Build { file, destination } => build(file, destination),
+        Subcommands::Install { file, destination } => install(file, destination),
+        Subcommands::Init { destination } => {
+            init(destination).map_err(|err| anyhow!("Failed to create files: {err}"))
+        }
     }
+}
+
+fn init(destination: Option<PathBuf>) -> Result<()> {
+    let destination = destination.unwrap_or(env::current_dir()?);
+
+    fs::write(
+        destination.join("mymod.yml"),
+        serde_yml::to_string(&ModBuild::default())?,
+    )?;
+
+    println!(
+        "{}{}",
+        "Successfully created build file at ".green(),
+        destination.to_string_lossy().bright_green().bold()
+    );
+
+    Ok(())
 }
 
 fn build(file: PathBuf, destination: Option<PathBuf>) -> Result<()> {
