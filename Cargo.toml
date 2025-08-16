@@ -8,13 +8,16 @@ license = "MIT"
 repository = "https://github.com/septech/mcmodbuild"
 
 [dependencies]
-anyhow = "1.0.98"
 clap = { version = "4.5.37", features = ["derive"] }
-directories = "6.0.0"
 serde = { version = "1.0.219", features = ["derive"] }
+anyhow = "1.0.98"
+directories = "6.0.0"
 serde_yml = "0.0.12"
-oxfmt = { path = "oxfmt", package = "oxfmt" }
+oxfmt = "0.4.0"
 colored = "3.0.0"
+
+[patch.crates-io]
+oxfmt = { path = "oxfmt", package = "oxfmt" }
 
 [lib]
 name = "mcmodbuild"

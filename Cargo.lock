@@ -272,6 +272,8 @@ dependencies = [
 [[package]]
 name = "oxfmt_derive"
 version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4519f8c555a23e3e81a27d0c79c1b78ff52f66348c7e5eb4fe57b5e789b290a7"
 dependencies = [
  "proc-macro2",
  "quote",

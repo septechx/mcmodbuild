@@ -2,6 +2,10 @@
 name = "oxfmt_derive"
 version = "0.2.0"
 edition = "2024"
+authors = ["septech"]
+description = "Derive macro for oxfmt"
+license = "MIT"
+repository = "https://github.com/septech/oxfmt"
 
 [lib]
 proc-macro = true
