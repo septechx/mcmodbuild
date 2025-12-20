@@ -16,9 +16,6 @@ serde_yml = "0.0.12"
 oxfmt = "1.0.0"
 colored = "3.0.0"
 
-[patch.crates-io]
-oxfmt = { path = "../oxfmt", package = "oxfmt" }
-
 [lib]
 name = "mcmodbuild"
 path = "src/lib.rs"
