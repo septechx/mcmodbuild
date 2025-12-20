@@ -263,6 +263,8 @@ checksum = "04744f49eae99ab78e0d5c0b603ab218f515ea8cfe5a456d7629ad883a3b6e7d"
 [[package]]
 name = "oxfmt"
 version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "069a1ebe2a9959cbe0eeb0c3d5750302d8ebb0efc4a3c2aa4ad914ee3d48fbdf"
 dependencies = [
  "anyhow",
  "downcast-rs",
@@ -483,3 +485,7 @@ name = "windows_x86_64_msvc"
 version = "0.52.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "589f6da84c646204747d1270a2a5661ea66ed1cced2631d546fdfb155959f9ec"
+
+[[patch.unused]]
+name = "oxfmt"
+version = "1.0.0"

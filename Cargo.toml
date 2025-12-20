@@ -17,7 +17,7 @@ oxfmt = "0.4.0"
 colored = "3.0.0"
 
 [patch.crates-io]
-oxfmt = { path = "oxfmt", package = "oxfmt" }
+oxfmt = { path = "../oxfmt", package = "oxfmt" }
 
 [lib]
 name = "mcmodbuild"
