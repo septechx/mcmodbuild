@@ -7,18 +7,17 @@ pub fn deserialize(buf: &[u8]) -> Result<ModBuild> {
     let version: u16 = 1;
 
     let mut deserialize = Deserialize::new(buf, header, version)?;
-    let id = deserialize.read_string()?;
-    let name = deserialize.read_string()?;
-    let git = deserialize.read_string()?;
-    let branch = deserialize.read_string()?;
-    let build_int = deserialize.read_u8()?;
-    let build = BuildType::try_from(build_int)?;
+    let id = deserialize.read()?;
+    let name = deserialize.read()?;
+    let git = deserialize.read()?;
+    let branch = deserialize.read()?;
+    let build: BuildType = deserialize.read::<u8>()?.into();
     let cmd = match build {
-        BuildType::Cmd => Some(deserialize.read_string()?),
+        BuildType::Cmd => Some(deserialize.read()?),
         BuildType::Std => None,
     };
-    let out = deserialize.read_string()?;
-    let exclude = deserialize.read_vec()?;
+    let out = deserialize.read()?;
+    let exclude = deserialize.read()?;
 
     Ok(ModBuild {
         id,
